@@ -28,7 +28,6 @@ public class Cluster {
         this.capacidadActual -= vcpus; 
     }
 
-
     public void liberarCapacidad(int vcpus){
         validarValorPositivo(vcpus); 
         this.capacidadActual += vcpus;
