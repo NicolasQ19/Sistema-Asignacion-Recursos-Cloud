@@ -56,7 +56,6 @@ public class NotificacionesTest {
     @Test
     void asignacionRegistraMovimientoEnCloudTrail() throws OverprovisioningException {
         cluster.registrarObservador(cloudTrail);
-
         cluster.asignar(300);
 
         assertEquals(1, cloudTrail.getMovimientos().size());
@@ -68,7 +67,6 @@ public class NotificacionesTest {
     @Test
     void liberacionNotificaAlSRE() {
         cluster.registrarObservador(new NotificacionSRE());
-
         cluster.liberarCapacidad(50);
 
         String salida = capturadorDeSalida.toString();
@@ -90,8 +88,7 @@ public class NotificacionesTest {
     @Test
     void alarmaCriticaNoSeDisparaSiElClusterSigueEnPositivo() throws OverprovisioningException {
         cluster.registrarObservador(new AlarmaSaturacionCritica());
-
-        cluster.asignar(300); // 1000 - 300 = 700
+         cluster.asignar(300); // 1000 - 300 = 700
 
         assertEquals("", capturadorDeSalida.toString().trim());
     }
@@ -99,7 +96,6 @@ public class NotificacionesTest {
     @Test
     void operacionQueFallaPorOverprovisioningNoNotificaANadie() {
         cluster.registrarObservador(cloudTrail);
-
         assertThrows(OverprovisioningException.class, () -> cluster.asignar(5000));
 
         assertTrue(cloudTrail.getMovimientos().isEmpty());

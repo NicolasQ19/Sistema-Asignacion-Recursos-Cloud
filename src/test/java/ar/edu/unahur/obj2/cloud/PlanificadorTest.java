@@ -73,7 +73,7 @@ public class PlanificadorTest {
     }
 
     @Test
-    void planQueFallaAMitadDeCaminoRevierteLoYaEjecutadoYPropagaElError() {
+    void planQueFallaAMitadDeCaminoRevierteLoYaEjecutadoYTiraElError() {
         PlanDespliegue plan = new PlanDespliegue();
         plan.agregarOperacion(new Asignacion(cluster, 300));   // se ejecuta OK: 1000 -> 700
         plan.agregarOperacion(new Liberacion(cluster, 50));    // se ejecuta OK: 700 -> 750
