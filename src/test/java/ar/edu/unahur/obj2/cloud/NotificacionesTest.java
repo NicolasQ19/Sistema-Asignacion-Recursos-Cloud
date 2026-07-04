@@ -79,7 +79,7 @@ public class NotificacionesTest {
     void alarmaCriticaSeDisparaSiElClusterQuedaEnNegativo() throws OverprovisioningException {
         cluster.registrarObservador(new AlarmaSaturacionCritica());
 
-        cluster.asignar(1150); // 1000 - 1150 = -150
+        cluster.asignar(1150);
 
         String salida = capturadorDeSalida.toString();
         assertTrue(salida.contains("-150"));
@@ -88,7 +88,7 @@ public class NotificacionesTest {
     @Test
     void alarmaCriticaNoSeDisparaSiElClusterSigueEnPositivo() throws OverprovisioningException {
         cluster.registrarObservador(new AlarmaSaturacionCritica());
-         cluster.asignar(300); // 1000 - 300 = 700
+         cluster.asignar(300); 
 
         assertEquals("", capturadorDeSalida.toString().trim());
     }

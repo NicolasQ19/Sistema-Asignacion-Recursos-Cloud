@@ -75,9 +75,9 @@ public class PlanificadorTest {
     @Test
     void planQueFallaAMitadDeCaminoRevierteLoYaEjecutadoYTiraElError() {
         PlanDespliegue plan = new PlanDespliegue();
-        plan.agregarOperacion(new Asignacion(cluster, 300));   // se ejecuta OK: 1000 -> 700
-        plan.agregarOperacion(new Liberacion(cluster, 50));    // se ejecuta OK: 700 -> 750
-        plan.agregarOperacion(new Asignacion(cluster, 5000));  // falla: 750 - 5000 < -200
+        plan.agregarOperacion(new Asignacion(cluster, 300));   
+        plan.agregarOperacion(new Liberacion(cluster, 50));    
+        plan.agregarOperacion(new Asignacion(cluster, 5000));  
 
         assertThrows(OverprovisioningException.class, () -> planificador.ejecutar(plan));
 
