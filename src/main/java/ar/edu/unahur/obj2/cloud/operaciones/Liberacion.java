@@ -16,11 +16,11 @@ public class Liberacion implements OperacionCluster {
     }
     @Override
     public void deshacer() throws OverprovisioningException {
+        cluster.asignar(vcpus);
+    }
+
+    @Override
+    public void ejecutar() {
         cluster.liberarCapacidad(vcpus);
     }
-    
-    @Override
-    public void ejecutar() throws OverprovisioningException {
-        cluster.asignar(vcpus);  
-    } 
 }
